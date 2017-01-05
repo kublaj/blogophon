@@ -31,10 +31,10 @@
                 {{#meta.Modified.locale}}
                   <time datetime="{{meta.Modified.iso}}" itemprop="dateModified" class="modified">{{meta.Modified.locale}}</time>
                 {{/meta.Modified.locale}}
-                <h4 itemprop="name headline"><a href="{{meta.AbsoluteUrlAmp}}" rel="bookmark">{{meta.Title}}</a></h4>
+                <h4 itemprop="name headline"><a href="{{meta.AbsoluteUrlAmp}}" rel="bookmark">{{title.plain}}</a></h4>
               </header>
               <div itemprop="description">
-                {{{ampHtmlTeaser}}}
+                {{{description.ampHtml}}}
               </div>
               {{#meta.hasNoExtraDescription}}
                 {{#meta.hasExternalLink}}
@@ -42,7 +42,7 @@
                 {{/meta.hasExternalLink}}
               {{/meta.hasNoExtraDescription}}
               {{^meta.hasNoExtraDescription}}
-                <p><a href="{{meta.AbsoluteUrlAmp}}" title="{{meta.Title}}">Weiter lesen…</a></p>
+                <p><a href="{{meta.AbsoluteUrlAmp}}" title="{{title.plain}}">Weiter lesen…</a></p>
               {{/meta.hasNoExtraDescription}}
 
               <footer class="meta">

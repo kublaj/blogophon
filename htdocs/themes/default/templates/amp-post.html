@@ -2,7 +2,7 @@
 <html ⚡ lang="{{config.locale.language}}" dir="{{config.locale.direction}}">
 <head>
   <meta charset="utf-8">
-  <title>{{post.meta.Title}} | {{config.name}}</title>
+  <title>{{post.title.plain}} | {{config.name}}</title>
   <link rel="canonical" href="{{post.meta.AbsoluteUrl}}" />
   {{>amp_meta}}
 </head>
@@ -21,10 +21,10 @@
           {{/meta.Image}}
           <header>
             <time datetime="{{meta.Created.iso}}" itemprop="datePublished" class="date">{{meta.Created.locale}}</time>
-            <h2 itemprop="name headline">{{meta.Title}}</h2>
+            <h2 itemprop="name headline">{{title.plain}}</h2>
           </header>
           <div itemprop="articleBody">
-            {{{ampHtml}}}
+            {{{body.ampHtml}}}
               {{#meta.hasExternalLink}}
                 <p><a href="{{meta.Link}}">Weiter zur Seite…</a></p>
               {{/meta.hasExternalLink}}

@@ -56,10 +56,10 @@
                   {{#meta.Modified.locale}}
                     <time datetime="{{meta.Modified.iso}}" itemprop="dateModified" class="modified">{{meta.Modified.locale}}</time>
                   {{/meta.Modified.locale}}
-                  <h4 itemprop="name headline"><a href="{{meta.Link}}">{{meta.Title}}</a></h4>
+                  <h4 itemprop="name headline"><a href="{{meta.Link}}">{{title.plain}}</a></h4>
                 </header>
                 <div itemprop="description">
-                  {{{htmlTeaser}}}
+                  {{{description.html}}}
                 </div>
                 {{#meta.hasNoExtraDescription}}
                   {{#meta.hasExternalLink}}
@@ -67,7 +67,7 @@
                   {{/meta.hasExternalLink}}
                 {{/meta.hasNoExtraDescription}}
                 {{^meta.hasNoExtraDescription}}
-                  <p><a href="{{meta.Url}}" title="{{meta.Title}}">Weiter lesen…</a></p>
+                  <p><a href="{{meta.Url}}" title="{{title.plain}}">Weiter lesen…</a></p>
                 {{/meta.hasNoExtraDescription}}
                 {{#meta.Tags.length}}
                   <footer class="meta">

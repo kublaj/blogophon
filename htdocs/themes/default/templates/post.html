@@ -2,11 +2,11 @@
 <html lang="{{config.locale.language}}" dir="{{config.locale.direction}}" prefix="og: http://ogp.me/ns#">
 <head>
   <meta charset="UTF-8" />
-  <title>{{post.meta.Title}} | {{config.name}}</title>
+  <title>{{post.title.plain}} | {{config.name}}</title>
   <meta property="og:type" content="article" />
   <meta property="og:url" content="{{post.meta.AbsoluteUrl}}" />
-  <meta property="og:title" name="title" content="{{post.meta.Title}}" />
-  <meta property="og:description" name="description" content="{{post.meta.Description}}" />
+  <meta property="og:title" name="title" content="{{post.title.plain}}" />
+  <meta property="og:description" name="description" content="{{post.description.plain}}" />
   {{#post.meta.Image}}
     <meta property="og:image" content="{{post.meta.Image}}" />
   {{/post.meta.Image}}
@@ -53,10 +53,10 @@
             {{/meta.Image}}
             <header>
               <time datetime="{{meta.Created.iso}}" itemprop="datePublished" class="date">{{meta.Created.locale}}</time>
-              <h2 itemprop="name headline">{{meta.Title}}</h2>
+              <h2 itemprop="name headline">{{title.plain}}</h2>
             </header>
             <div itemprop="articleBody">
-              {{{html}}}
+              {{{body.html}}}
 
               {{#meta.RatingObj}}
                 <p itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
