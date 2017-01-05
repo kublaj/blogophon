@@ -8,10 +8,11 @@ exports.testContentorBasic = function testContentorBasic(test) {
   config.specialFeatures.acceleratedmobilepages = true;
   config.specialFeatures.atom = true;
   var markdown;
+  var relUrl = '/foo/';
   var content;
 
   markdown = 'Ich bin ganz harmlos';
-  content = contentor(markdown, config);
+  content = contentor(markdown, relUrl, config);
 
   test.ok(content.markdown);
   test.ok(content.html);
@@ -24,7 +25,7 @@ exports.testContentorBasic = function testContentorBasic(test) {
   test.ok(content.plain === content.markdown);
 
   markdown = 'Ich bin nicht mehr [ganz harmlos](http://www.example.com)';
-  content = contentor(markdown, config);
+  content = contentor(markdown, relUrl, config);
   //console.log(content);
 
   test.ok(content.markdown);
@@ -38,8 +39,8 @@ exports.testContentorBasic = function testContentorBasic(test) {
   test.ok(content.plain !== content.markdown);
 
   markdown = '![Mit Bildern](image.jpg#default) geht so richtig die Post ab, ich bin definitiv nicht mehr [ganz harmlos](http://www.example.com)';
-  content = contentor(markdown, config);
-  console.log(content);
+  content = contentor(markdown, relUrl, config);
+  //console.log(content);
 
   test.ok(content.markdown);
   test.ok(content.html);

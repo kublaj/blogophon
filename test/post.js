@@ -37,11 +37,11 @@ exports.testStructure = function(test) {
     Date: new Date()
   });
 
-  test.ok(testPost.markdown);
+  test.ok(testPost.body.markdown);
   test.ok(testPost.share);
   test.ok(testPost.share.twitter);
   test.ok(testPost.meta);
-  test.ok(testPost.meta.Description);
+  test.ok(testPost.description.plain);
   test.ok(testPost.meta.Language);
   test.ok(testPost.meta.Date);
   test.ok(testPost.meta.DateModified);
@@ -51,15 +51,16 @@ exports.testStructure = function(test) {
   test.ok(testPost.meta.AbsoluteLink);
   test.ok(testPost.hash);
   test.ok(testPost.hash.match(/^[a-z0-9]+$/));
-  test.ok(testPost.html);
-  test.equal(testPost.html, '<p>Test</p>');
-  test.ok(testPost.htmlTeaser);
-  test.equal(testPost.htmlTeaser, '<p>Description</p>');
+  test.ok(testPost.body.html);
+  test.equal(testPost.body.html, '<p>Test</p>');
+  test.ok(testPost.description.html);
+  test.equal(testPost.description.html, '<p>Description</p>');
   test.equal(String(testPost), testPost.hash);
   test.equal(testPost.meta.Url, testPost.meta.Link);
   test.equal(testPost.meta.AbsoluteUrl, testPost.meta.AbsoluteLink);
   test.done();
 };
+
 
 exports.testReplacingMarkdown = function(test) {
   test.expect(9);
@@ -74,15 +75,15 @@ exports.testReplacingMarkdown = function(test) {
 
   //console.log(testPost);
 
-  test.equal(testPost.markdown, testMarkdown, 'Input markdown equals output markdown');
-  test.equal(testPost.meta.Description, 'Description and some internal link.', 'Description has no markdown');
-  test.equal(testPost.meta.MarkdownDescription, testMarkdownDescription, '...but there is a description with markdown');
+  test.equal(testPost.body.markdown, testMarkdown, 'Input markdown equals output markdown');
+  test.equal(testPost.description.plain, 'Description and some internal link.', 'Description has no markdown');
+  test.equal(testPost.description.markdown, testMarkdownDescription, '...but there is a description with markdown');
   test.ok(testPost.meta.Image.match(/some\-image.jpg/));
   test.ok(testPost.meta.ProperImage.match(/some\-image.jpg/));
-  test.ok(testPost.html.match(/test\/some\-image.jpg/), 'Image has path added');
-  test.ok(testPost.htmlTeaser.match(/test\/some\-image.jpg/), 'Image has path added');
-  test.ok(!testPost.html.match(/internal\.md/), 'Internal links are converted');
-  test.ok(!testPost.htmlTeaser.match(/internal\.md/), 'Internal links are converted');
+  test.ok(testPost.body.html.match(/test\/some\-image.jpg/), 'Image has path added');
+  test.ok(testPost.description.html.match(/test\/some\-image.jpg/), 'Image has path added');
+  test.ok(!testPost.body.html.match(/internal\.md/), 'Internal links are converted');
+  test.ok(!testPost.description.html.match(/internal\.md/), 'Internal links are converted');
 
   test.done();
 };
@@ -100,8 +101,8 @@ exports.testImageParser = function(test) {
     Date: new Date()
   });
 
-  test.ok(testPost.markdown);
-  test.ok(testPost.meta.MarkdownDescription);
+  test.ok(testPost.body.markdown);
+  test.ok(testPost.description.markdown);
 
   var imageStyles = testPost.getAllImagesWithStyle();
   //console.log(imageStyles);
@@ -118,7 +119,7 @@ exports.testImageParser = function(test) {
   //console.log(imageStyles);
   test.ok(imageStyles['description.jpg']);
   test.ok(imageStyles['markdown.jpg']);
-  test.ok(testPost.html.match(/src="http:\/\/www\.example\.com\/remote\.jpg"/));
+  test.ok(testPost.body.html.match(/src="http:\/\/www\.example\.com\/remote\.jpg"/));
 
   test.done();
 };

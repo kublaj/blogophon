@@ -5,7 +5,14 @@ var markyMark       = require('../helpers/marky-mark');
 var imageStyles     = require('../helpers/image-styles');
 var ampify          = require('../helpers/ampify')();
 
-var contentor = function(markdown, config) {
+var contentor = function(markdown, relUrl, config) {
+  if (!relUrl) {
+    throw new Error('Missing relUrl in contentor');
+  }
+  if (!config) {
+    throw new Error('Missing config in contentor');
+  }
+
   var internal = {};
   var external = {};
 
@@ -54,7 +61,7 @@ var contentor = function(markdown, config) {
 
   external = {
     markdown: markdown,
-    html: internal.convertMarkdown(markdown),
+    html: internal.convertMarkdown(markdown, relUrl),
     plain: internal.removeMarkdown(markdown)
   };
 
