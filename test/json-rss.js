@@ -18,6 +18,9 @@ exports.testBasicProperties = function(test) {
         timestamp: 5
       },
       tags: [6, 7]
+    },
+    title: {
+      plain: 3
     }
   };
   var jsonRss = require('../src/models/json-rss')([item], pubDate, config);

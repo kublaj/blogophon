@@ -272,7 +272,7 @@ var Generator = function(config) {
             config:      config,
             absoluteUrl: urls.rss.absoluteUrl(),
             title:       title
-          }, {contentHtml: Mustache.facebookHtml || '{{{safeHtml}}}'})));
+          }, {contentHtml: Mustache.facebookHtml || '{{{body.safeHtml}}}'})));
         }
         if (config.specialFeatures.atom) {
           promises.push(fs.writeFileAsync( urls.atom.filename(), Mustache.render(Mustache.templates.atom, {

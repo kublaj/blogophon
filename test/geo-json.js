@@ -15,6 +15,9 @@ exports.testBasicProperties = function(test) {
       tags: [6, 7],
       Longitude: 8,
       Latitude: 9
+    },
+    title: {
+      plain: 3
     }
   };
   var geojson = require('../src/models/geo-json')([item], new Date(), config);

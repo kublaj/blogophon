@@ -21,9 +21,9 @@ var jsonRss = function(index, pubDate, config, title) {
       lastBuildDateTs: pubDate.timestamp,
       items: index.map(function(item){
         var returnItem = {
-          title: item.meta.Title,
-          description: item.safeHtmlTeaser || item.htmlTeaser,
-          contentEncoded: item.safeHtml || item.html,
+          title: item.title.plain,
+          description: item.description ? item.description.safeHtml || item.description.plain : '',
+          contentEncoded: item.body ? item.body.safeHtml || item.body.html : '',
           link: item.meta.AbsoluteLink || item.meta.AbsoluteUrl,
           pubDate: item.meta.Created.rfc,
           pubDateTs: item.meta.Created.timestamp,

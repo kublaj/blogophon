@@ -10,7 +10,7 @@ var appleNewsFormat = function(post) {
   return {
     version: 1.2,
     identifier: post.meta.AbsoluteUrl,
-    title: post.meta.Title,
+    title: post.title.plain,
     language: post.meta.Language.replace(/\-/, '_'),
     layout: {
       columns: 7,
@@ -19,7 +19,7 @@ var appleNewsFormat = function(post) {
     components: [
       {
         role: 'body',
-        text: post.markdown
+        text: post.body ? post.body.markdown : ''
       }
     ],
     componentTextStyles: {
@@ -34,7 +34,7 @@ var appleNewsFormat = function(post) {
     metadata: {
       canonicalURL: post.meta.AbsoluteUrl,
       datePublished: post.meta.Created.iso,
-      excerpt: post.meta.Description,
+      excerpt: post.description ? post.description.markdown || post.meta.Description : '',
       keywords: post.meta.Keywords.trim().split(/,\s*/)
     }
   };

@@ -1,4 +1,4 @@
-<!doctype html> 
+<!doctype html>
 <html lang="{{meta.Language}}" dir="{{meta.Direction}}" prefix="op: http://media.facebook.com/op#">
 <head>
   <meta charset="utf-8">
@@ -23,14 +23,14 @@
           <figcaption></figcaption>
         </figure>
       {{/meta.Image}}
-      <h1>{{meta.Title}}</h1>
+      <h1>{{title.plain}}</h1>
       <time class="op-published" datetime="{{meta.Created.iso}}">{{meta.Created.locale}}</time>
       <time class="op-modified" datetime="{{meta.Modified.iso}}">{{meta.Modified.locale}}</time>
       {{#meta.AuthorName}}
         <address><a>{{meta.AuthorName}}</a></address>
       {{/meta.AuthorName}}
     </header>
-    {{{safeHtml}}}
+    {{{body.safeHtml}}}
   </article>
 </body>
 </html>

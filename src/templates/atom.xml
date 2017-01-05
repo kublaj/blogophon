@@ -13,9 +13,9 @@
   </author>
   {{#index}}
     <entry xml:lang="{{meta.Language}}" xml:base="{{config.absoluteBasePath}}">
-      <title>{{meta.Title}}</title>
-      <summary type="html"><![CDATA[{{{safeHtmlTeaser}}}]]></summary>
-      <content type="html"><![CDATA[{{{safeHtml}}}]]></content>
+      <title>{{title.plain}}</title>
+      <summary type="html"><![CDATA[{{{description.safeHtml}}}]]></summary>
+      <content type="html"><![CDATA[{{{body.safeHtml}}}]]></content>
       <link href="{{meta.AbsoluteLink}}?utm_medium=newsfeed" />
       <published>{{meta.Created.iso}}</published>
       <updated>{{meta.Modified.iso}}</updated>

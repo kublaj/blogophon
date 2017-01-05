@@ -14,8 +14,8 @@
     <atom:link href="{{absoluteUrl}}" rel="self" type="application/rss+xml" />
     {{#index}}
       <item>
-        <title>{{meta.Title}}</title>
-        <description><![CDATA[{{{safeHtmlTeaser}}}]]></description>
+        <title>{{title.plain}}</title>
+        <description><![CDATA[{{{description.safeHtml}}}]]></description>
         <link>{{meta.AbsoluteLink}}?utm_medium=newsfeed</link>
         <pubDate>{{meta.Created.rfc}}</pubDate>
         <content:encoded><![CDATA[{{>contentHtml}}]]></content:encoded>
